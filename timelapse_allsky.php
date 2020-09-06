@@ -3,8 +3,10 @@
 /*
  * timelapse_allsky.php
  * Genera il filmato in timelapse della notte e cancella le immagini vecchie
- * Nel filmato e` aggiunto un watermark
- * 2013-2016 - Dario Pilori <dario.pilori@astrogeo.va.it>
+ * Nel filmato e` aggiunto un watermark.
+ *
+ * 2013-2020 - Dario Pilori <dario.pilori@astrogeo.va.it>
+ * SPDX-License-Identifier: MIT
 */
 // Directory contenente le immagini
 define("DIR", "/media/allsky");
@@ -15,13 +17,6 @@ define("FTPPASS", "***REMOVED***");
 
 // Imposta timezone
 date_default_timezone_set('Europe/Rome');
-
-/*
-// Controllo se è montata
-if(exec("mount | grep ".DIR) == "") {
-	die("ERRORE: NAS non trovato");
-}
-*/
 
 // Timestamp UNIX (secondi)
 $oggi = time();
