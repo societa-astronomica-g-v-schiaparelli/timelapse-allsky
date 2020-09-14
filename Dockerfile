@@ -17,6 +17,7 @@ USER allsky
 
 # Install script
 ADD timelapse_allsky.php /home/allsky
+ADD ftp_settings.php /home/allsky
 ADD logo.png /home/allsky
 
 # Run PySQM
