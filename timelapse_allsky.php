@@ -11,9 +11,10 @@
 // Directory contenente le immagini
 define("DIR", "/media/allsky");
 // Impostazioni FTP
-define("FTPHOST", "10.101.0.2");
-define("FTPUSER", "allskyvideo");
-define("FTPPASS", "***REMOVED***");
+// define("FTPHOST", "ftp.example.com");
+// define("FTPUSER", "user");
+// define("FTPPASS", "passwords");
+require_once('ftp_settings.php');
 
 // Imposta timezone
 date_default_timezone_set('Europe/Rome');
