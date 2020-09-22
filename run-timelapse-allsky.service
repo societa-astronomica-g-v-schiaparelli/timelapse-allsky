@@ -1,0 +1,6 @@
+[Unit]
+Description=Generates and uploads new AllSky timelapse
+
+[Service]
+ExecStart=/usr/bin/podman run --rm --user allsky -v /media/allsky:/media/allsky -t allsky-timelapse
+Type=oneshot

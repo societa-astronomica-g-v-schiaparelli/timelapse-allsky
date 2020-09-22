@@ -11,9 +11,15 @@ buildah bud -t allsky-timelapse .
 ### Run
 Assuming that the data directory is `/media/allsky`, run with:
 ```bash
-podman run -v /media/allsky:/media/allsky -t timelapse-allsky 
+podman run --rm --user allsky -v /media/allsky:/media/allsky -t allsky-timelapse 
 ```
-This command is meant to be run daily, e.g. using a systemd timer.
+This command is meant to be run daily.
 
-## Todo
-Set up a systemd timer to periodically run this command.
+### Systemd timer
+This command can be daily run using the systemd timer `run-timelapse-allsky.timer` and the
+corresponding service `run-timelapse-allsky.service`. Edit them accordingly, then run
+```bash
+cp run-timelapse-allsky.* /etc/systemd/system
+systemctl daemon-reload
+systemctl --now enable run-timelapse-allsky.timer
+```

@@ -1,0 +1,8 @@
+[Unit]
+Description=Periodically generate and upload AllSky timelapse
+
+[Timer]
+OnCalendar=*-*-* 08:28:00
+
+[Install]
+WantedBy=multi-user.target
