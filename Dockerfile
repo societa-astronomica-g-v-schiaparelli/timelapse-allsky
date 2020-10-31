@@ -1,12 +1,13 @@
-# Base information
+## Container for timelapse-allsky
+# Copyright (c) 2020 - Dario Pilori <dario.pilori@astrogeo.va.it>
+# SPDX-License-Identifier: MIT
 FROM ubuntu:20.04
-MAINTAINER Dario Pilori <dario.pilori@astrogeo.va.it>
-
-# Update
-RUN apt -y update && apt -y full-upgrade && apt -y clean
+LABEL maintainer="dario.pilori@astrogeo.va.it"
 
 # Install dependencies
-RUN apt -y install php-cli graphicsmagick-imagemagick-compat mencoder ffmpeg
+RUN apt-get -y update && apt-get -y install \
+    php-cli graphicsmagick-imagemagick-compat mencoder ffmpeg \
+    && rm -rf /var/lib/apt/lists/*
 
 # Select volume for images
 VOLUME /media/allsky
@@ -21,5 +22,6 @@ ADD ftp_settings.php /home/allsky
 ADD logo.png /home/allsky
 
 # Run PySQM
-ENTRYPOINT cd /home/allsky && php timelapse_allsky.php
+WORKDIR /home/allsky
+CMD php timelapse_allsky.php
 

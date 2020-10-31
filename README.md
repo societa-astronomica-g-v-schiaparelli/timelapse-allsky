@@ -1,6 +1,13 @@
 # timelapse-allsky
 Set of scripts, and a Dockerfile, to clean up old AllSky images and generate a daily timelapse.
 
+## General description
+A SBIG (now Diffraction) [All-Sky 340](https://diffractionlimited.com/product/all-sky-340-cameras/) camera, with its original software, generates
+a series images (in jpeg format) in a folder. These images can be automatically uploaded with FTP, but the software doesn't provide any
+useful method to remove old images (or images taken during the day) or to generate a timelapse video.
+
+Therefore, we've written this simple PHP script, which does exactly these things.
+
 ## Usage
 ### Build
 Build with: 
