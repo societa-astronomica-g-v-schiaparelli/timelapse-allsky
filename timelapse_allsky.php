@@ -90,7 +90,7 @@ if($retval) {
 }
 
 // FTP upload
-$ftpconn = ftp_connect(FTPHOST) or die("Unable to connect to FTP server\n");
+$ftpconn = ftp_ssl_connect(FTPHOST) or die("Unable to connect to FTP server\n");
 ftp_login($ftpconn, FTPUSER, FTPPASS) or die("Login error on FTP server\n");
 ftp_pasv($ftpconn, true);
 ftp_put($ftpconn, "allsky.mp4",$tlupname, FTP_BINARY) or die("Unable to upload file via FTP\n");
