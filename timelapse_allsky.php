@@ -71,7 +71,7 @@ fclose($tl);
 
 // Generate movie with mencoder
 $da = date('Ymd');
-$cmd = "/usr/bin/mencoder -really-quiet -nosound -noskip -oac copy -ovc x264 -x264encopts preset=slow:bitrate=1200 -o ".DIR."/timelapse_videos/allsky_$da.avi -mf fps=10 'mf://@$tlname'";
+$cmd = "/usr/bin/mencoder -really-quiet -nosound -noskip -oac copy -ovc x264 -x264encopts preset=slow:bitrate=1200 -o ".DIR."/timelapse_videos/allsky_$da.avi -mf fps=20 'mf://@$tlname'";
 $output = exec($cmd, $output, $retval);
 
 if($retval) {
