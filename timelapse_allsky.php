@@ -4,7 +4,7 @@
  * timelapse_allsky.php
  * Generate a nightly timelapse video and delete old images
  *
- * Copyright (c) 2013-2020 - Dario Pilori <dario.pilori@astrogeo.va.it>
+ * Copyright (c) 2013-2023 - Dario Pilori <dario.pilori@astrogeo.va.it>
  * SPDX-License-Identifier: MIT
 */
 // Directory with images
@@ -90,7 +90,7 @@ if($retval) {
 }
 
 // FTP upload
-$ftpconn = ftp_ssl_connect(FTPHOST) or die("Unable to connect to FTP server\n");
+$ftpconn = ftp_connect(FTPHOST) or die("Unable to connect to FTP server\n");
 ftp_login($ftpconn, FTPUSER, FTPPASS) or die("Login error on FTP server\n");
 ftp_pasv($ftpconn, true);
 ftp_put($ftpconn, "allsky.mp4",$tlupname, FTP_BINARY) or die("Unable to upload file via FTP\n");

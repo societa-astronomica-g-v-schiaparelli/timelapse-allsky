@@ -1,10 +1,12 @@
 ## Container for timelapse-allsky
-# Copyright (c) 2020 - Dario Pilori <dario.pilori@astrogeo.va.it>
+# Copyright (c) 2020-2023 - Dario Pilori <dario.pilori@astrogeo.va.it>
 # SPDX-License-Identifier: MIT
-FROM ubuntu:20.04
+FROM ubuntu:22.04
 LABEL maintainer="dario.pilori@astrogeo.va.it"
+ENV TZ=Europe/Rome
 
 # Install dependencies
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 RUN apt-get -y update && apt-get -y install \
     php-cli graphicsmagick-imagemagick-compat mencoder ffmpeg \
     && rm -rf /var/lib/apt/lists/*

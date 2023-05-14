@@ -9,16 +9,18 @@ useful method to remove old images (or images taken during the day) or to genera
 Therefore, we've written this simple PHP script, which does exactly these things.
 
 ## Usage
+Install the latest version of [Docker Engine](https://docs.docker.com/engine/install/).
+
 ### Build
 Build with: 
 ```bash
-buildah bud -t allsky-timelapse .
+docker build -t allsky-timelapse .
 ```
 
 ### Run
 Assuming that the data directory is `/media/allsky`, run with:
 ```bash
-podman run --rm --user allsky -v /media/allsky:/media/allsky -t allsky-timelapse 
+docker run --rm --user allsky -v /media/allsky:/media/allsky -t allsky-timelapse 
 ```
 This command is meant to be run daily.
 
