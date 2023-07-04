@@ -2,5 +2,5 @@
 Description=Generates and uploads new AllSky timelapse
 
 [Service]
-ExecStart=/usr/bin/docker run --rm --user allsky -v /media/allsky:/media/allsky -t allsky-timelapse
+ExecStart=/usr/bin/docker run --rm -v /media/allsky:/media/allsky -t allsky-timelapse
 Type=oneshot

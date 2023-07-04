@@ -1,12 +1,10 @@
 # timelapse-allsky
-Set of scripts, and a Dockerfile, to clean up old AllSky images and generate a daily timelapse.
+Set of scripts, and a Dockerfile, to clean up old AllSky images, generate and upload a daily timelapse video.
 
 ## General description
-A SBIG (now Diffraction) [All-Sky 340](https://diffractionlimited.com/product/all-sky-340-cameras/) camera, with its original software, generates
-a series images (in jpeg format) in a folder. These images can be automatically uploaded with FTP, but the software doesn't provide any
-useful method to remove old images (or images taken during the day) or to generate a timelapse video.
-
-Therefore, we've written this simple PHP script, which does exactly these things.
+A *Alcor-System OMEA 5C* camera, with its original software, generates
+a series images (in JPEG format) in a folder. The software builds a timelapse video in an *ancient* format (AVI with XviD codec).
+This script generates a video in a modern, and browser-compatible, format: VP9 with WebM container.
 
 ## Usage
 Install the latest version of [Docker Engine](https://docs.docker.com/engine/install/).
@@ -32,3 +30,8 @@ cp run-timelapse-allsky.* /etc/systemd/system
 systemctl daemon-reload
 systemctl --now enable run-timelapse-allsky.timer
 ```
+
+## TODO
+For the time being, the following features are not yet implemented:
+- Cleaning up of old images
+- Upload of the timelapse video

@@ -2,7 +2,7 @@
 Description=Periodically generate and upload AllSky timelapse
 
 [Timer]
-OnCalendar=*-*-* 08:28:00
+OnCalendar=*-*-* 12:30:00
 
 [Install]
 WantedBy=multi-user.target

@@ -1,29 +1,21 @@
-## Container for timelapse-allsky
-# Copyright (c) 2020-2023 - Dario Pilori <dario.pilori@astrogeo.va.it>
+# Build a timelapse video from the allsky images using ffmpeg
+# The video is encoded in the VP9 format for maximum browser compatibility
+# This container is meant to be run daily by a "oneshot" systemd unit
+
+# Copyright (c) 2023 Società Astronomica G.V. Schiaparelli <dario.pilori@astrogeo.va.it>
 # SPDX-License-Identifier: MIT
-FROM ubuntu:22.04
-LABEL maintainer="dario.pilori@astrogeo.va.it"
-ENV TZ=Europe/Rome
 
-# Install dependencies
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-RUN apt-get -y update && apt-get -y install \
-    php-cli graphicsmagick-imagemagick-compat mencoder ffmpeg \
-    && rm -rf /var/lib/apt/lists/*
+FROM lscr.io/linuxserver/ffmpeg:latest
 
-# Select volume for images
-VOLUME /media/allsky
+# Environment parameters
+ENV MAIN_DIR="/media/allsky"
+ENV RES_DIR="timelapse"
+ENV THREADS=10
+ENV DAY=""
 
-# Create unprivileged user
-RUN useradd -r -s /sbin/nologin -m -d /home/allsky -u 1001 allsky
-USER allsky
+# Copy script
+COPY timelapse_allsky.sh /
 
-# Install script
-ADD timelapse_allsky.php /home/allsky
-ADD ftp_settings.php /home/allsky
-ADD logo.png /home/allsky
-
-# Run PySQM
-WORKDIR /home/allsky
-CMD php timelapse_allsky.php
-
+# Override entrypoint of the base container
+ENTRYPOINT [ "/usr/bin/env" ]
+CMD ["/bin/bash", "/timelapse_allsky.sh"]
