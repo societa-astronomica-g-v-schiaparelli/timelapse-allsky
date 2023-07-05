@@ -6,7 +6,7 @@
 
 # Read date from environment; if not given, take today
 if [ -z "$DAY" ]; then
-    DAY=$(date +%Y-%m-%d)
+    DAY=$(date --date="yesterday" +%Y-%m-%d)
 fi
 
 # Execute timelapse with the given settings
