@@ -5,7 +5,7 @@
 # SPDX-License-Identifier: MIT
 
 # Read date from environment; if not given, take today
-if [ -e "$DAY" ]; then
+if [ -z "$DAY" ]; then
     DAY=$(date +%Y-%m-%d)
 fi
 
@@ -18,3 +18,5 @@ fi
         ${MAIN_DIR}/${RES_DIR}/${DAY}.webm
 
 # TODO: upload with FTP the result
+
+# TODO: remove old images
