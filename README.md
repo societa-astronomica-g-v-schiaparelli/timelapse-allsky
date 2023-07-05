@@ -2,9 +2,9 @@
 Set of scripts, and a Dockerfile, to clean up old AllSky images, generate and upload a daily timelapse video.
 
 ## General description
-A *Alcor-System OMEA 5C* camera, with its original software, generates
-a series images (in JPEG format) in a folder. The software builds a timelapse video in an *ancient* format (AVI with XviD codec).
-This script generates a video in a modern, and browser-compatible, format: VP9 with WebM container.
+A [Alcor-System OMEA 5C](https://www.alcor-system.com/new/AllSky/Omea_camera.html) camera, with its original software, generates
+a series images (in JPEG format) in a folder. The software builds a timelapse video in an *ancient* format (AVI with [XviD](https://www.xvid.com/) codec).
+This script generates a video in a modern, and browser-compatible, format: [VP9](https://developers.google.com/media/vp9) with WebM container.
 
 ## Usage
 Install the latest version of [Docker Engine](https://docs.docker.com/engine/install/).
