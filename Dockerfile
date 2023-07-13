@@ -10,11 +10,23 @@ FROM lscr.io/linuxserver/ffmpeg:latest
 # Environment parameters
 ENV MAIN_DIR="/media/allsky"
 ENV RES_DIR="timelapse"
-ENV THREADS=10
+ENV THREADS=4
 ENV DAY=""
+
+# Install LFTP client
+RUN \
+  echo "**** install lftp ****" && \
+    apt-get update && \
+    apt-get install -y \
+    lftp && \
+  echo "**** clean up ****" && \
+  rm -rf \
+    /var/lib/apt/lists/* \
+    /var/tmp/*
 
 # Copy script
 COPY timelapse_allsky.sh /
+COPY ftp_settings /
 
 # Override entrypoint of the base container
 ENTRYPOINT [ "/usr/bin/env" ]
