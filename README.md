@@ -1,6 +1,8 @@
 # timelapse-allsky
 Set of scripts, and a Dockerfile, to clean up old AllSky images, generate and upload a daily timelapse video.
 
+This project has been archived, since the active development has been moved to a private repository.
+
 ## General description
 A [Alcor-System OMEA 5C](https://www.alcor-system.com/new/AllSky/Omea_camera.html) camera, with its original software, generates
 a series images (in JPEG format) in a folder. The software builds a timelapse video in an *ancient* format (AVI with [XviD](https://www.xvid.com/) codec).
@@ -34,4 +36,3 @@ systemctl --now enable run-timelapse-allsky.timer
 ## TODO
 For the time being, the following features are not yet implemented:
 - Cleaning up of old images
-- Upload of the timelapse video
